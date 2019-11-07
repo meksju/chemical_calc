@@ -7,24 +7,26 @@
 {% block main %}
 <!-- Main header -->
     <header class="main-header  text-white text-center">
-        <div class="overlay"></div>
         <div class="container-fluid">
             <div class="row">
-              <div class="col-md-12" >
-                   <h1 class="md-5">Enter the chemical formula of a compound:</h1>
+                <div class="col-md-12">
+                   <h1>Enter the chemical formula of a compound:</h1>
                   <!-- Input form -->
-                  <div class="row">
-                      <div class="col-md-2">
-                          <body>
-                              <form action="/" method="post">
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" name="formula"  autofocus>
-                                  </div>
-                              </form>
-                          </body>
-                       </div>
-                  </div>
-              </div>
+                    <div class="input-block mx-auto">
+                        <form action="/" method="post">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" name="formula"  autofocus>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-block btn-primary">Calculate!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+               </div>
             </div>
         </div>
     </header>
