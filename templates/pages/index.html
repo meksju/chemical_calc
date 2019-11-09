@@ -6,7 +6,8 @@
 
 {% block main %}
 <!-- Main header -->
-    <header class="main-header  text-white text-center">
+    <div class="row">
+        <header class="main-header  text-white text-center">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -30,4 +31,41 @@
             </div>
         </div>
     </header>
+    </div>
+    <div class="row">
+        <div class="col-md-3 background">
+        </div>
+
+        <!-- Table result -->
+        <div class="col-md-6">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Element</th>
+                        <th>Molecular mass</th>
+                        <th>Number</th>
+                        <th>Total</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>value</th>
+                        <th>value</th>
+                        <th>value</th>
+                        <th>value</th>
+                        <th>value</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- End of table -->
+
+        <div class="col-md-3 background">
+        </div>
+    </div>
+
+     <footer>
+         <p>Created by: Oksana Kuziv</p>
+     </footer>
 {% endblock %}

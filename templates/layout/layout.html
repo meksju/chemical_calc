@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Molecular mass calculator</title>
+
      <!-- Bootstrap core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -15,18 +16,18 @@
     <link href="/static/styles/css/landing-page.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-     <nav class="navbar navbar-light bg-light static-top">
-         <div class="container">
-          <a class="navbar-brand" href="#">Molecular mass calculator</a>
-          <a class="btn btn-primary" href="#"></a>
-         </div>
-     </nav>
-    <main class="container-fluid">
+    <div class="container-fluid">
+        <!-- Navigation -->
     <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-light bg-light static-top">
+                <a class="navbar-brand" href="#">Molecular mass calculator</a>
+                <a class="btn btn-primary" href="#"></a>
+            </nav>
+        </div>
+    </div>
         {% block main %}{% endblock %}
     </div>
-    </main>
 
 </body>
 </html>
