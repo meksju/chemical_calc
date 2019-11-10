@@ -17,7 +17,6 @@ mysql = MySQL(app)
 @app.before_first_request
 def insert_elements():
     count = make_db_request("""SELECT * FROM `elements`""", "")
-    print(count)
     if count == 0:
         with open('data/PeriodicTableJSON.json') as f:
             data = json.load(f)
@@ -29,11 +28,13 @@ def insert_elements():
 
 
 @app.route('/')
-def hello_world():
-    result = make_db_request("""SELECT * FROM `elements`""", "")
-    print(result)
+def index():
     return render_template('pages/index.html')
 
+@app.route('/check', methods=["GET"])
+def formula():
+    result = request.args.get('formula')
+    print(result)
 
 def make_db_request(query, variables):
     cursor = mysql.connection.cursor()
