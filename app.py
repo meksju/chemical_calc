@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, redirect, request
 from flask_mysqldb import MySQL
+import re
 # noinspection PyUnresolvedReferences
 import json
 import os
@@ -31,10 +32,18 @@ def insert_elements():
 def index():
     return render_template('pages/index.html')
 
+
 @app.route('/check', methods=["GET"])
-def formula():
+def check():
     result = request.args.get('formula')
-    print(result)
+    # Checks if user provided input
+    if not result:
+        return apology("please write a formula")
+    else:
+        elements = []
+        elements = re.split("([A-Z][a-z]?)(\d+)?", result)
+        print(elements)
+        return redirect('/')
 
 def make_db_request(query, variables):
     cursor = mysql.connection.cursor()
@@ -44,6 +53,10 @@ def make_db_request(query, variables):
         result = cursor.execute(query, variables)
     mysql.connection.commit()
     return result
+
+
+def apology(message):
+    return render_template("pages/apology.html", message=message)
 
 
 if __name__ == '__main__':
