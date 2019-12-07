@@ -5,20 +5,20 @@
 {% endblock %}
 
 {% block main %}
-<!-- Main header -->
     <div class="row">
-        <header class="main-header  text-white text-center">
-        <div class="container-fluid">
+         <div class="search-box mx-auto">
             <div class="row">
+                <div class="col-md-12 text-center">
+                   <h1 class="main-header">Enter the chemical formula of a compound:</h1>
+                </div>
                 <div class="col-md-12">
-                   <h1>Enter the chemical formula of a compound:</h1>
                   <!-- Input form -->
-                    <div class="input-block mx-auto">
+                    <div class="input-block">
                         <form action="/check" method="get">
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control" name="formula"  autofocus>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" name="formula" id="formula" autofocus>
                                 </div>
                                 <div class="col-md-2">
                                     <button type="submit" class="btn btn-block btn-primary">Calculate!</button>
@@ -30,15 +30,11 @@
                </div>
             </div>
         </div>
-    </header>
     </div>
     <div class="row">
-        <div class="col-md-3 background">
-        </div>
-
-        <!-- Table result -->
-        <div class="col-md-6">
-            <table class="table">
+          <!-- Table result -->
+        <div class="col-md-12">
+            <table class="table elements-table">
                 <thead class="thead-light">
                     <tr>
                         <th>Element</th>
@@ -49,23 +45,39 @@
                     </tr>
                 </thead>
                 <tbody>
+                {% if formula %}
+                    {% set ns = namespace(total = 0.00) %}
+                    {% for element in formula %}
                     <tr>
-                        <th>value</th>
-                        <th>value</th>
-                        <th>value</th>
-                        <th>value</th>
-                        <th>value</th>
+                        <td>{{ element.name }}</td>
+                        <td>{{ element.mass }}</td>
+                        <td>{{ element.number }}</td>
+                        <td>{{ element.number*element.mass }}</td>
+                         <td></td>
+                        {% set ns.total = ns.total + element.number*element.mass %}
                     </tr>
+                    {% endfor %}
+                     <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ ns.total| round(2) }}</td>
+                </tr>
+                {% endif %}
                 </tbody>
             </table>
         </div>
         <!-- End of table -->
-
-        <div class="col-md-3 background">
-        </div>
     </div>
 
-     <footer>
+     <footer class="footer fixed-bottom">
          <p>Created by: Oksana Kuziv</p>
      </footer>
+    <script>
+    $(document).ready(function(){
+        /* Alert window if input doesn't exist */
+
+    })
+    </script>
 {% endblock %}

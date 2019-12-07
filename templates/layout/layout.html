@@ -17,15 +17,19 @@
 </head>
 <body>
     <div class="container-fluid">
-        <!-- Navigation -->
-    <div class="row">
-        <div class="col-md-12">
-            <nav class="navbar navbar-light bg-light static-top">
-                <a class="navbar-brand" href="#">Molecular mass calculator</a>
-                <a class="btn btn-primary" href="#"></a>
-            </nav>
-        </div>
-    </div>
+        {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <span>{{ message }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
         {% block main %}{% endblock %}
     </div>
 
